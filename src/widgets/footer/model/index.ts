@@ -1,0 +1,1 @@
+export { footerSections } from './constant'

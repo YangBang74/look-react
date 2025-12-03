@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+@import './shared/assets/fonts/index.css';
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+
+  overflow-x: hidden;
+}
+
+a,
+button {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.contain {
+  @apply md:px-[60px] px-5 md:py-[40px] py-10;
+}
+
+.footer-accordion-enter {
+  animation: footer-accordion-enter 0.2s ease-out;
+}
+
+@keyframes footer-accordion-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Infinite carousel styles */
+.infinite-carousel-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.infinite-carousel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.infinite-carousel-track {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  user-select: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+.infinite-carousel-track > div {
+  scroll-snap-align: start;
+}
