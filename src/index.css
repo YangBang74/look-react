@@ -23,6 +23,83 @@ button {
   animation: footer-accordion-enter 0.2s ease-out;
 }
 
+:root {
+  --radius: 0.65rem;
+  /* Основные цвета */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 20%);
+  /* Карточки */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 20%);
+  /* Всплывающие элементы (dropdown, popover) */
+  --popover: hsl(0 0% 20%);
+  --popover-foreground: hsl(0 0% 100%);
+  /* Основной акцентный цвет (#c87faa) */
+  --primary: hsl(325 45% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  /* Вторичный цвет (светлый розовый фон #f7ecf2) */
+  --secondary: hsl(325 58% 93%);
+  --secondary-foreground: hsl(0 0% 20%);
+  /* Приглушенные цвета */
+  --muted: hsl(325 58% 93%);
+  --muted-foreground: hsl(0 0% 42%);
+  /* Акцент для hover состояний */
+  --accent: hsl(325 58% 93%);
+  --accent-foreground: hsl(325 45% 60%);
+  /* Деструктивные действия */
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  /* Границы */
+  --border: hsl(0 0% 80%);
+  --input: hsl(0 0% 90%);
+  /* Фокус (ring) */
+  --ring: hsl(325 45% 60%);
+  /* Графики */
+  --chart-1: hsl(325 45% 60%);
+  --chart-2: hsl(325 50% 70%);
+  --chart-3: hsl(325 40% 50%);
+  --chart-4: hsl(325 35% 80%);
+  --chart-5: hsl(325 55% 55%);
+}
+
+.dark {
+  /* Темный фон (#333333) */
+  --background: hsl(0 0% 20%);
+  --foreground: hsl(0 0% 100%);
+  /* Всплывающие элементы в темной теме */
+  --popover: hsl(0 0% 20%);
+  --popover-foreground: hsl(0 0% 100%);
+  /* Карточки в темной теме */
+  --card: hsl(0 0% 10%);
+  --card-foreground: hsl(0 0% 100%);
+  /* Основной акцентный цвет (остается тем же) */
+  --primary: hsl(325 45% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  /* Вторичный цвет (темный фон кнопок #1a1a1a) */
+  --secondary: hsl(0 0% 10%);
+  --secondary-foreground: hsl(0 0% 100%);
+  /* Приглушенные цвета в темной теме */
+  --muted: hsl(0 0% 29%);
+  --muted-foreground: hsl(0 0% 80%);
+  /* Акцент */
+  --accent: hsl(325 45% 60%);
+  --accent-foreground: hsl(0 0% 100%);
+  /* Деструктивные действия */
+  --destructive: hsl(0 62% 30%);
+  --destructive-foreground: hsl(0 0% 100%);
+  /* Границы в темной теме (#4a4a4a) */
+  --border: hsl(0 0% 29%);
+  --input: hsl(0 0% 29%);
+  /* Фокус */
+  --ring: hsl(325 45% 60%);
+  /* Графики в темной теме */
+  --chart-1: hsl(325 45% 60%);
+  --chart-2: hsl(325 50% 70%);
+  --chart-3: hsl(325 40% 50%);
+  --chart-4: hsl(325 35% 80%);
+  --chart-5: hsl(325 55% 55%);
+}
+
 @keyframes footer-accordion-enter {
   from {
     opacity: 0;
@@ -59,4 +136,116 @@ button {
 
 .infinite-carousel-track > div {
   scroll-snap-align: start;
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Dropdown Menu animations */
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdown-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+}
+
+/* Анимация для dropdown menu при открытии */
+[data-slot='dropdown-menu-content'] {
+  opacity: 0;
+  transform: scale(0.95) translateY(-4px);
+}
+
+[data-slot='dropdown-menu-content'][data-state='open'] {
+  animation: dropdown-in 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-slot='dropdown-menu-content'][data-state='closed'] {
+  animation: dropdown-out 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-in {
+  animation: dropdown-in 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-out {
+  animation: dropdown-out 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar for dialog */
+.dialog-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c87faa #f7ecf2;
+}
+
+.dialog-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-track {
+  background: #f7ecf2;
+  border-radius: 10px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb {
+  background: #c87faa;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b36d96;
+}
+
+/* Apply custom scrollbar to all scrollable elements inside dialog */
+[data-slot='dialog-content'] [class*='overflow-y-auto'],
+[data-slot='dialog-content'] [class*='overflow-x-auto'] {
+  scrollbar-width: thin;
+  scrollbar-color: #c87faa #f7ecf2;
+}
+
+[data-slot='dialog-content'] [class*='overflow-y-auto']::-webkit-scrollbar,
+[data-slot='dialog-content'] [class*='overflow-x-auto']::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-slot='dialog-content'] [class*='overflow-y-auto']::-webkit-scrollbar-track,
+[data-slot='dialog-content'] [class*='overflow-x-auto']::-webkit-scrollbar-track {
+  background: #f7ecf2;
+  border-radius: 10px;
+}
+
+[data-slot='dialog-content'] [class*='overflow-y-auto']::-webkit-scrollbar-thumb,
+[data-slot='dialog-content'] [class*='overflow-x-auto']::-webkit-scrollbar-thumb {
+  background: #c87faa;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+[data-slot='dialog-content'] [class*='overflow-y-auto']::-webkit-scrollbar-thumb:hover,
+[data-slot='dialog-content'] [class*='overflow-x-auto']::-webkit-scrollbar-thumb:hover {
+  background: #b36d96;
 }

@@ -17,9 +17,7 @@ export const Footer = () => {
         <div className="hidden md:grid grid-cols-4 gap-[40px] mb-[40px]">
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="font-['Montserrat',sans-serif] text-white text-[16px] mb-[20px] uppercase">
-                {section.title}
-              </h3>
+              <h3 className="  text-white text-[16px] mb-[20px] uppercase">{section.title}</h3>
               <ul className="space-y-[12px] text-[#cccccc] text-[14px]">
                 {section.items.map((item) => (
                   <li key={item.label}>
@@ -49,7 +47,7 @@ export const Footer = () => {
               <div key={section.title} className=" pb-[12px]">
                 <button
                   type="button"
-                  className="w-full flex items-center gap-[4px] text-left font-['Montserrat',sans-serif] text-white text-[16px] mb-[8px] uppercase hover:text-[#c87faa] transition-colors"
+                  className="w-full flex items-center gap-[4px] text-left   text-white text-[16px] mb-[8px] uppercase hover:text-[#c87faa] transition-colors"
                   onClick={() => toggleSection(index)}>
                   <ChevronDown
                     className={`size-[18px] transition-transform duration-300 flex-shrink-0 ${
@@ -86,18 +84,14 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-[20px]">
           <div className="flex flex-col md:flex-row gap-[20px] items-center">
             <div className="flex gap-[10px] items-center">
-              <p className="font-['Montserrat',sans-serif] text-[#999999] text-[14px]">
-                Обратная связь:
-              </p>
+              <p className="  text-[#999999] text-[14px]">Обратная связь:</p>
               <a
                 href="mailto:info@lookformer.com"
-                className="font-['Montserrat',sans-serif] text-white text-[14px] hover:text-[#c87faa] transition-colors">
+                className="  text-white text-[14px] hover:text-[#c87faa] transition-colors">
                 info@lookformer.com
               </a>
             </div>
-            <p className="font-['Montserrat',sans-serif] text-[#999999] text-[14px]">
-              © 2025 Lookformer. Все права защищены.
-            </p>
+            <p className="  text-[#999999] text-[14px]">© 2025 Lookformer. Все права защищены.</p>
           </div>
           <div className="flex gap-[12px] items-center">
             <Link

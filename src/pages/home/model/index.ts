@@ -1,2 +1,9 @@
-export type { LookCard, LookCardProps, HomeShortcut } from './type'
-export { homeShortcuts } from './constant'
+export type {
+  LookCard,
+  LookCardProps,
+  HomeShortcut,
+  Category,
+  CategoryCardProps,
+  InfoCard,
+} from './type'
+export { homeShortcuts, categories, infoCards } from './constant'

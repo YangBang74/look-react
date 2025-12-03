@@ -22,7 +22,7 @@ export const MobileFooter = () => {
                 aria-hidden="true"
               />
               <span
-                className={`font-['Montserrat',sans-serif] text-[10px] transition-colors ${
+                className={`  text-[10px] transition-colors ${
                   isActive ? 'text-[#c87faa]' : 'text-[#d0d0d0]'
                 }`}>
                 {label}

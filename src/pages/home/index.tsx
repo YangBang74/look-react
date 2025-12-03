@@ -1,11 +1,10 @@
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { InfiniteSlider } from '@/shared/ui'
 import { formatPrice, getItemsWord } from './lib/utils'
-import { LookCard } from './ui'
+import { LookCard, CategoryCard } from './ui'
 import type { LookCard as LookCardType } from './model'
-import { homeShortcuts } from './model'
-
+import { homeShortcuts, categories, infoCards } from './model'
 
 const looksData: LookCardType[] = [
   {
@@ -74,7 +73,7 @@ export const HomePage = () => {
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-[#333333] uppercase text-lg md:text-[1.375rem]">Мои образы</h2>
           <button className="flex items-center gap-[8px] text-[#c87faa] hover:text-[#b36e96] transition-colors md:text-sm text-[13px]">
-            <span className="font-['Montserrat',sans-serif]">Смотреть все</span>
+            <span className=" ">Смотреть все</span>
             <ChevronRight className="size-[16px] md:size-5" />
           </button>
         </div>
@@ -93,6 +92,48 @@ export const HomePage = () => {
             )
           })}
         </InfiniteSlider>
+      </div>
+      <div>
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-[#333333] uppercase text-lg md:text-[1.375rem]">Мой шкаф</h2>
+          <button className="flex items-center gap-[8px] text-[#c87faa] hover:text-[#b36e96] transition-colors md:text-sm text-[13px]">
+            <span>Смотреть все</span>
+            <ChevronRight className="size-[16px] md:size-5" />
+          </button>
+        </div>
+        <InfiniteSlider autoScrollInterval={6000} cardWidth={200} gap={15}>
+          {categories.map((category) => (
+            <CategoryCard key={category.id} category={category} />
+          ))}
+        </InfiniteSlider>
+      </div>
+      <div className="space-y-[3.125rem]">
+        {infoCards.map((card) => {
+          const Icon = card.Icon
+          return (
+            <div
+              key={card.id}
+              className={`${card.bgClassName} rounded-[30px] overflow-hidden cursor-pointer hover:shadow-xl transition-all md:p-[50px] p-[25px]`}>
+              <div className="flex items-center md:flex-row flex-col md:text-left text-center gap-[40px]">
+                <div className="bg-white rounded-[20px] flex items-center justify-center flex-shrink-0 w-[120px] h-[120px]">
+                  <Icon className="size-[60px] text-[#c87faa]" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-['Montserrat',sans-serif] text-[#333333] uppercase mb-[12px] text-[24px]">
+                    {card.title}
+                  </h3>
+                  <p className="font-['Montserrat',sans-serif] text-[#6c6c6c] mb-[20px] text-[16px]">
+                    {card.description}
+                  </p>
+                  <button className="inline-flex items-center gap-[10px] px-[24px] py-[12px] bg-[#c87faa] text-white rounded-[100px] font-['Montserrat',sans-serif] hover:bg-[#b36e96] transition-colors text-[14px]">
+                    {card.buttonText}
+                    <ArrowRight className="size-[18px]" aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
