@@ -68,7 +68,7 @@ export const MyThingsPage = () => {
       <p className="text-muted-foreground text-[14px]">
         Показано вещей: <span className="text-[#c87faa]">{filteredThings.length}</span>
       </p>
-      <div className="grid gap-[20px] overflow-visible xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 grid-cols-2  mt-[15px]">
+      <div className="grid gap-[20px] overflow-visible lg:grid-cols-4 md:grid-cols-4 grid-cols-2  mt-[15px]">
         {filteredThings.map((thing) => (
           <ThingCard
             key={thing.id}
@@ -83,7 +83,7 @@ export const MyThingsPage = () => {
       {thingsInFitting.size > 0 && (
         <button
           type="button"
-          className="fixed bg-[#c87faa] text-white rounded-full shadow-lg hover:bg-[#b56d96] transition-all hover:scale-110 flex items-center justify-center z-50 group md:top-[120px] md:right-[50px] md:w-[70px] md:h-[70px] bottom-[100px] right-[20px] w-[60px] h-[60px]"
+          className="fixed bg-[#c87faa] text-white rounded-full shadow-lg hover:bg-[#b56d96] transition-all hover:scale-110 flex items-center justify-center z-50 group md:bottom-[30px] md:right-[30px] md:w-[70px] md:h-[70px] bottom-[100px] right-[20px] w-[60px] h-[60px]"
           title="Перейти в примерочную">
           <div className="relative">
             <svg
