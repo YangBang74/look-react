@@ -76,7 +76,6 @@ export const MyThingsPage = () => {
         {filteredThings.map((thing) => (
           <ThingCard
             key={thing.id}
-            id={thing.id}
             title={thing.title}
             brand={thing.brand}
             image={thing.image}

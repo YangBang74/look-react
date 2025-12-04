@@ -9,7 +9,6 @@ import {
 import { AddThingDialog } from './AddThingDialog/AddThingDialog'
 
 type ThingCardProps = {
-  id: string
   title: string
   brand: string
   image: string
@@ -18,15 +17,7 @@ type ThingCardProps = {
   onDelete?: () => void
 }
 
-export const ThingCard = ({
-  id,
-  title,
-  brand,
-  image,
-  inFitting,
-  onToggleFitting,
-  onDelete,
-}: ThingCardProps) => {
+export const ThingCard = ({ title, brand, image, inFitting, onToggleFitting, onDelete }: ThingCardProps) => {
   const [isEditOpen, setIsEditOpen] = useState(false)
 
   return (
