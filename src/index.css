@@ -16,7 +16,7 @@ button {
 }
 
 .contain {
-  @apply md:px-[60px] px-5 md:py-[40px] py-10;
+  @apply md:px-[60px] px-5 md:py-10 py-5;
 }
 
 .footer-accordion-enter {

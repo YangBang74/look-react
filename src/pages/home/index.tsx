@@ -63,7 +63,7 @@ export const HomePage = () => {
           ))}
         </InfiniteSlider>
       </div>
-      <div className="space-y-[3.125rem]">
+      <div className="space-y-5 md:space-y-[3.125rem] mb-5">
         {infoCards.map((card) => {
           const Icon = card.Icon
           return (
