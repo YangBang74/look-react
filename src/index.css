@@ -42,7 +42,7 @@ button {
   --secondary-foreground: #333333;
   /* Приглушенные цвета */
   --muted: hsl(325 58% 93%);
-  --muted-foreground: #999999;
+  --muted-foreground: #6c6c6c;
   /* Акцент для hover состояний */
   --accent: hsl(325 58% 93%);
   --accent-foreground: #b56d96;

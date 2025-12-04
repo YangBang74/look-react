@@ -1,119 +1,49 @@
-import { useState } from 'react'
-import { Button, MultiSelect } from '@/shared/ui'
-import type { MultiSelectOption } from '@/shared/ui/multi-select'
-import { Plus, Search, SlidersHorizontal, X } from 'lucide-react'
-
-const filterConfigs: { label: string; key: string; options: MultiSelectOption[] }[] = [
-  {
-    label: 'Категория',
-    key: 'category',
-    options: [
-      { label: 'Куртки', value: 'jackets' },
-      { label: 'Джинсы', value: 'jeans' },
-      { label: 'Свитеры', value: 'sweaters' },
-      { label: 'Платья', value: 'dresses' },
-      { label: 'Джемперы', value: 'jumpers' },
-      { label: 'Юбки', value: 'skirts' },
-      { label: 'Рубашки', value: 'shirts' },
-      { label: 'Обувь', value: 'shoes' },
-      { label: 'Пальто', value: 'coats' },
-      { label: 'Блузки', value: 'blouses' },
-      { label: 'Брюки', value: 'trousers' },
-      { label: 'Пиджаки', value: 'blazers' },
-    ],
-  },
-  {
-    label: 'Цвет',
-    key: 'color',
-    options: [
-      { label: 'Красный', value: 'red' },
-      { label: 'Синий', value: 'blue' },
-      { label: 'Коричневый', value: 'brown' },
-      { label: 'Чёрный', value: 'black' },
-      { label: 'Зелёный', value: 'green' },
-      { label: 'Серый', value: 'gray' },
-      { label: 'Белый', value: 'white' },
-      { label: 'Розовый', value: 'pink' },
-    ],
-  },
-  {
-    label: 'Сезон',
-    key: 'season',
-    options: [
-      { label: 'Осень', value: 'autumn' },
-      { label: 'Зима', value: 'winter' },
-      { label: 'Весна', value: 'spring' },
-      { label: 'Лето', value: 'summer' },
-    ],
-  },
-  {
-    label: 'Теги',
-    key: 'tags',
-    options: [],
-  },
-  {
-    label: 'Место хранения',
-    key: 'storage',
-    options: [],
-  },
-] as const
+import { Button } from '@/shared/ui'
+import { Plus, Search, SlidersHorizontal } from 'lucide-react'
+import { ThingCard } from './ui/ThingCard'
+import { ThingFilters } from './ui/ThingFilters'
+import { filterConfigs } from './model'
+import { useMyThings } from './model/useMyThings'
 
 export const MyThingsPage = () => {
-  const [showFilters, setShowFilters] = useState(false)
-  const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>(() =>
-    filterConfigs.reduce<Record<string, string[]>>((acc, cfg) => {
-      acc[cfg.key] = []
-      return acc
-    }, {})
-  )
-
-  const handleFilterChange = (key: string, values: string[]) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [key]: values,
-    }))
-  }
-
-  const handleRemoveTag = (filterKey: string, value: string) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [filterKey]: prev[filterKey]?.filter((v) => v !== value) ?? [],
-    }))
-  }
-
-  const handleResetAll = () => {
-    setSelectedFilters(
-      filterConfigs.reduce<Record<string, string[]>>((acc, cfg) => {
-        acc[cfg.key] = []
-        return acc
-      }, {})
-    )
-  }
-
-  const hasSelectedFilters = Object.values(selectedFilters).some((values) => values.length > 0)
+  const {
+    showFilters,
+    setShowFilters,
+    searchQuery,
+    setSearchQuery,
+    selectedFilters,
+    thingsInFitting,
+    filteredThings,
+    handleFilterChange,
+    handleRemoveTag,
+    handleResetAll,
+    handleToggleFitting,
+  } = useMyThings()
 
   return (
     <div className="contain md:space-y-5 space-y-2.5">
       <div className="flex items-center justify-between">
-        <h1 className=" text-foreground leading-[1.1] uppercase tracking-wide text-[28px]">
+        <h1 className="text-foreground leading-[1.1] uppercase tracking-wide md:text-[28px] text-xl">
           МОИ ВЕЩИ
         </h1>
         <Button type="button" variant="default" size="lg">
           <Plus className="size-[18px]" aria-hidden="true" />
-          Добавить вещь
+          Добавить
+          <span className="hidden md:block">вещь</span>
         </Button>
       </div>
       <div className="flex items-center gap-[12px] mb-[20px]">
         <div className="flex-1 relative">
           <Search
-            className="size-[18px] text-muted-foreground absolute left-[16px] top-1/2 -translate-y-1/2"
+            className="size-[18px] text-[#999999] absolute left-[16px] top-1/2 -translate-y-1/2"
             aria-hidden="true"
           />
           <input
             type="text"
             placeholder="Поиск по категории, цвету, тегам, бренду..."
-            className="w-full border border-border rounded-full focus:outline-none focus:border-primary bg-white transition-colors pl-[45px] pr-[16px] py-[10px] text-[14px]"
-            value=""
+            className="w-full border border-border truncate rounded-full focus:outline-none focus:border-primary bg-white transition-colors pl-[45px] pr-[16px] py-[10px] text-[14px]"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <Button
@@ -123,61 +53,57 @@ export const MyThingsPage = () => {
           className="px-[20px] normal-case"
           onClick={() => setShowFilters((prev) => !prev)}>
           <SlidersHorizontal className="size-[16px]" aria-hidden="true" />
-          Фильтры
+          <span className="hidden md:block">Фильтры</span>
         </Button>
       </div>
       {showFilters && (
-        <div className="space-y-2.5">
-          <div className="bg-[#f7ecf2] rounded-[20px] px-[25px] py-[15px] space-y-[12px]">
-            <div className="flex gap-[12px] items-center flex-wrap md:flex-nowrap">
-              {filterConfigs.map((item) => (
-                <div key={item.key} className="relative w-full md:w-auto flex-1 min-w-[160px]">
-                  <MultiSelect
-                    label={item.label}
-                    options={item.options}
-                    value={selectedFilters[item.key]}
-                    onChange={(values) => handleFilterChange(item.key, values)}
-                  />
-                </div>
-              ))}
+        <ThingFilters
+          filterConfigs={filterConfigs}
+          selectedFilters={selectedFilters}
+          onFilterChange={handleFilterChange}
+          onRemoveTag={handleRemoveTag}
+          onResetAll={handleResetAll}
+        />
+      )}
+      <p className="text-muted-foreground text-[14px]">
+        Показано вещей: <span className="text-[#c87faa]">{filteredThings.length}</span>
+      </p>
+      <div className="grid gap-[20px] overflow-visible xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 grid-cols-2  mt-[15px]">
+        {filteredThings.map((thing) => (
+          <ThingCard
+            key={thing.id}
+            title={thing.title}
+            brand={thing.brand}
+            image={thing.image}
+            inFitting={thingsInFitting.has(thing.id)}
+            onToggleFitting={() => handleToggleFitting(thing.id)}
+          />
+        ))}
+      </div>
+      {thingsInFitting.size > 0 && (
+        <button
+          type="button"
+          className="fixed bg-[#c87faa] text-white rounded-full shadow-lg hover:bg-[#b56d96] transition-all hover:scale-110 flex items-center justify-center z-50 group md:top-[120px] md:right-[50px] md:w-[70px] md:h-[70px] bottom-[100px] right-[20px] w-[60px] h-[60px]"
+          title="Перейти в примерочную">
+          <div className="relative">
+            <svg
+              className="size-[28px]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <path d="M3 3 L3 21" />
+              <path d="M8 3 Q 6 6, 8 9 Q 10 12, 8 15 Q 6 18, 8 21" />
+              <path d="M13 3 Q 15 6, 13 9 Q 11 12, 13 15 Q 15 18, 13 21" />
+              <path d="M21 3 L21 21" />
+            </svg>
+            <div className="absolute bg-white text-[#c87faa] rounded-full flex items-center justify-center   font-semibold shadow-md -top-[10px] -right-[10px] w-[24px] h-[24px] text-[12px]">
+              {thingsInFitting.size}
             </div>
           </div>
-          {hasSelectedFilters && (
-            <div className="flex flex-wrap items-center justify-between gap-[12px] pt-[4px] mt-[8px]">
-              <div className="flex flex-wrap gap-[8px]">
-                {filterConfigs
-                  .flatMap((filter) => {
-                    const values = selectedFilters[filter.key] ?? []
-                    const labelMap = new Map(filter.options.map((o) => [o.value, o.label]))
-                    return values.map((value) => ({
-                      filterKey: filter.key,
-                      filterLabel: filter.label,
-                      value,
-                      label: labelMap.get(value) ?? value,
-                    }))
-                  })
-                  .map((item) => (
-                    <button
-                      key={`${item.filterKey}-${item.value}`}
-                      type="button"
-                      onClick={() => handleRemoveTag(item.filterKey, item.value)}
-                      className="bg-[#f7ecf2] text-primary rounded-full px-[15px] py-[6px] flex items-center gap-[6px] text-xs hover:bg-primary hover:text-white transition-colors group">
-                      <span>
-                        {item.filterLabel}: {item.label}
-                      </span>
-                      <X className="size-3.5 " aria-hidden="true" />
-                    </button>
-                  ))}
-              </div>
-              <button
-                type="button"
-                onClick={handleResetAll}
-                className="text-sm underline text-primary hover:text-accent-foreground transition-colors">
-                Сбросить все
-              </button>
-            </div>
-          )}
-        </div>
+        </button>
       )}
     </div>
   )

@@ -6,4 +6,4 @@ export type {
   CategoryCardProps,
   InfoCard,
 } from './type'
-export { homeShortcuts, categories, infoCards } from './constant'
+export { homeShortcuts, categories, infoCards, looksData } from './constant'

@@ -3,57 +3,13 @@ import { Link } from 'react-router-dom'
 import { InfiniteSlider, Button } from '@/shared/ui'
 import { formatPrice, getItemsWord } from './lib/utils'
 import { LookCard, CategoryCard } from './ui'
-import type { LookCard as LookCardType } from './model'
-import { homeShortcuts, categories, infoCards } from './model'
+import { homeShortcuts, categories, infoCards, looksData } from './model'
 
-const looksData: LookCardType[] = [
-  {
-    id: 1,
-    title: 'Офисный образ',
-    image: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400',
-    itemsCount: 3,
-    totalPrice: 11470,
-  },
-  {
-    id: 2,
-    title: 'Вечерний стиль',
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400',
-    itemsCount: 4,
-    totalPrice: 13760,
-  },
-  {
-    id: 3,
-    title: 'Повседневный look',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400',
-    itemsCount: 5,
-    totalPrice: 22750,
-  },
-  {
-    id: 4,
-    title: 'Летний комплект',
-    image: 'https://images.unsplash.com/photo-1713208633322-d4ae4e1c9ff9?w=400',
-    itemsCount: 4,
-    totalPrice: 16460,
-  },
-  {
-    id: 5,
-    title: 'Зимний образ',
-    image: 'https://images.unsplash.com/photo-1760551733340-a70825258486?w=400',
-    itemsCount: 6,
-    totalPrice: 17540,
-  },
-  {
-    id: 6,
-    title: 'Элегантный стиль',
-    image: 'https://images.unsplash.com/photo-1553808373-b2c5b7ddb117?w=400',
-    itemsCount: 4,
-    totalPrice: 25260,
-  },
-] as const
+
 
 export const HomePage = () => {
   return (
-    <div className="contain md:space-y-12.5 space-x-6">
+    <div className="contain md:space-y-12.5 space-y-6">
       <div className="grid gap-[15px] md:grid-cols-4 grid-cols-2">
         {homeShortcuts.map(({ label, Icon, to }) => (
           <Link

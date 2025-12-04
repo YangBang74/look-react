@@ -14,7 +14,7 @@ export const Header = () => {
   }, [location.pathname])
 
   return (
-    <div className="bg-[#333333] sticky top-0 z-50 right-0">
+    <div className="bg-[#333333] sticky top-0 z-1000 right-0">
       <div className="flex items-center justify-between lg:px-[60px] px-5 gap-2 py-4">
         <div className="flex items-center lg:gap-[40px] md:gap-4 gap-3">
           <p className="md:hidden text-lg text-white uppercase cursor-pointer hover:opacity-80 transition-opacity">

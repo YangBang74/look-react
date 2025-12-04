@@ -6,8 +6,11 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 
-function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+function DropdownMenu({
+  modal = false,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
+  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" modal={modal} {...props} />
 }
 
 function DropdownMenuPortal({
@@ -33,7 +36,7 @@ function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          'z-[9999] min-w-[8rem] overflow-visible rounded-md border !border-black/10 bg-white p-1 shadow-lg',
+          'z-[100] min-w-[8rem] overflow-visible rounded-md border !border-black/10 bg-white p-1 shadow-lg',
           className
         )}
         {...props}

@@ -19,7 +19,7 @@ export const buttonVariantClasses: Record<ButtonVariant, string> = {
 export const buttonSizeClasses: Record<ButtonSize, string> = {
   sm: 'px-[12px] py-[9px] text-xs',
   md: 'px-[16px] py-[10px] text-sm',
-  lg: 'px-[24px] py-[12px] text-base',
+  lg: 'md:px-[24px] px-5 md:py-[12px] py-2.5 text-base',
 }
 
 export const buttonColorClasses: Record<ButtonColor, string> = {

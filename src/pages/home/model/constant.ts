@@ -1,5 +1,5 @@
 import { Archive, Calendar, Shirt, Sparkles, CircleQuestionMark } from 'lucide-react'
-import type { HomeShortcut, Category, InfoCard } from './type'
+import type { HomeShortcut, Category, InfoCard, LookCard } from './type'
 
 export const homeShortcuts: HomeShortcut[] = [
   {
@@ -91,5 +91,50 @@ export const infoCards: InfoCard[] = [
     buttonText: 'Открыть туториал',
     Icon: CircleQuestionMark,
     bgClassName: 'bg-[#f7ecf2]',
+  },
+] as const
+
+export const looksData: LookCard[] = [
+  {
+    id: 1,
+    title: 'Офисный образ',
+    image: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400',
+    itemsCount: 3,
+    totalPrice: 11470,
+  },
+  {
+    id: 2,
+    title: 'Вечерний стиль',
+    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400',
+    itemsCount: 4,
+    totalPrice: 13760,
+  },
+  {
+    id: 3,
+    title: 'Повседневный look',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400',
+    itemsCount: 5,
+    totalPrice: 22750,
+  },
+  {
+    id: 4,
+    title: 'Летний комплект',
+    image: 'https://images.unsplash.com/photo-1713208633322-d4ae4e1c9ff9?w=400',
+    itemsCount: 4,
+    totalPrice: 16460,
+  },
+  {
+    id: 5,
+    title: 'Зимний образ',
+    image: 'https://images.unsplash.com/photo-1760551733340-a70825258486?w=400',
+    itemsCount: 6,
+    totalPrice: 17540,
+  },
+  {
+    id: 6,
+    title: 'Элегантный стиль',
+    image: 'https://images.unsplash.com/photo-1553808373-b2c5b7ddb117?w=400',
+    itemsCount: 4,
+    totalPrice: 25260,
   },
 ] as const

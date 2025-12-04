@@ -11,7 +11,7 @@ export const Footer = () => {
   }
 
   return (
-    <div className="bg-[#333333] w-full mt-[80px]">
+    <div className="bg-[#333333] w-full mt-10">
       <div className="contain">
         {/* desktop / tablet layout */}
         <div className="hidden md:grid grid-cols-4 gap-[40px] mb-[40px]">

@@ -8,3 +8,4 @@ export const mobileNavItems = [
   { label: 'Кабинет', to: '/profile', Icon: User },
 ] as const
 
+
