@@ -47,7 +47,7 @@ export const Header = () => {
                   ? 'bg-[#c87faa] text-white'
                   : 'text-[#999999] hover:text-white'
               }`}>
-              Шоппинг
+                Шоппинг
             </button>
             <button
               onClick={() => navigate('/')}
@@ -56,7 +56,7 @@ export const Header = () => {
                   ? 'bg-[#c87faa] text-white'
                   : 'text-[#999999] hover:text-white'
               }`}>
-              Мой стиль
+                Мой стиль
             </button>
           </div>
           {activeTab === 'my-style' && (
@@ -76,7 +76,7 @@ export const Header = () => {
                       .filter(Boolean)
                       .join(' ')
                   }>
-                  {label}
+                    {label}
                 </NavLink>
               ))}
             </nav>

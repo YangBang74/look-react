@@ -97,7 +97,7 @@ export const MultiSelect = ({
                 key={option.value}
                 type="button"
                 onClick={() => handleOptionClick(option.value)}
-                className="w-full px-[18px] py-[10px] text-left text-[13px] transition-colors flex items-center gap-[10px] text-[#333333] hover:bg-[#f7ecf2]">
+                className="w-full px-[18px] py-[10px] text-left text-[13px] transition-colors flex items-center gap-[10px]  text-foreground hover:bg-[#f7ecf2]">
                 <div
                   className={cn(
                     'w-[16px] h-[16px] rounded-[4px] border-2 flex items-center justify-center transition-colors border-[#d0d0d0] bg-white',
