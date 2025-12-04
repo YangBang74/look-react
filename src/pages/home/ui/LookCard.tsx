@@ -23,7 +23,7 @@ export const LookCard = ({ look, formattedPrice, itemsWord }: LookCardProps) => 
       </button>
       <div className="p-[15px]">
         <div className="flex items-start justify-between mb-[8px]">
-          <h3 className="  text-[#333333] flex-1 line-clamp-2 text-[16px]">{look.title}</h3>
+          <h3 className="   text-foreground flex-1 line-clamp-2 text-[16px]">{look.title}</h3>
           <div className="relative inline-block">
             <DropdownMenu>
               <DropdownMenuTrigger className="flex-shrink-0 w-[32px] h-[32px] rounded-full hover:bg-[#f7ecf2] flex items-center justify-center transition-colors ml-[8px]">
@@ -53,13 +53,13 @@ export const LookCard = ({ look, formattedPrice, itemsWord }: LookCardProps) => 
           </p>
         </div>
         <div className="flex items-center gap-[8px]">
-          <Button type="button" className="flex-1 gap-[6px]" variant="outline">
+          <Button type="button" className="flex-1 gap-[6px]" variant="outline" size="sm">
             <Share2 className="size-[14px]" aria-hidden="true" />
             Поделиться
           </Button>
           <Dialog>
             <DialogTrigger asChild>
-              <Button type="button" className="flex-1" variant="outline">
+              <Button type="button" className="flex-1" variant="outline" size="sm">
                 Посмотреть
               </Button>
             </DialogTrigger>

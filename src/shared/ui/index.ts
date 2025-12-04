@@ -18,3 +18,4 @@ export {
   DialogClose,
 } from './dialog'
 export { Button } from './button'
+export { MultiSelect } from './multi-select'

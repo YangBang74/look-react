@@ -73,9 +73,9 @@ export const LookDetailsDialog = ({
             <img src={look.image} alt={look.title} className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 flex flex-col min-w-0">
-            <h2 className="  text-[#333333] uppercase mb-[12px] text-[22px]">{look.title}</h2>
+            <h2 className="   text-foreground uppercase mb-[12px] text-[22px]">{look.title}</h2>
             <div className="mb-[20px]">
-              <p className="  text-[#333333] text-[16px]">
+              <p className="   text-foreground text-[16px]">
                 {look.itemsCount} {itemsWord}
               </p>
               <p className="  text-[#c87faa] mt-[5px] text-[20px]">{formattedPrice}&nbsp;₽</p>
@@ -101,7 +101,9 @@ export const LookDetailsDialog = ({
                   </DialogTrigger>
                   <DialogContent className="max-w-[400px]">
                     <DialogHeader>
-                      <DialogTitle className="  text-[#333333]">Подтверждение удаления</DialogTitle>
+                      <DialogTitle className="   text-foreground">
+                        Подтверждение удаления
+                      </DialogTitle>
                       <DialogDescription className="  text-[#6c6c6c]">
                         Вы уверены, что хотите удалить этот образ?
                       </DialogDescription>
@@ -125,7 +127,7 @@ export const LookDetailsDialog = ({
           </div>
         </div>
         <div>
-          <h3 className="  text-[#333333] uppercase mb-[20px] text-[18px]">Вещи в образе</h3>
+          <h3 className="   text-foreground uppercase mb-[20px] text-[18px]">Вещи в образе</h3>
           <div className="grid gap-[12px] flex-wrap lg:grid-cols-3 md:grid-cols-2 grid-cols-1 pb-[10px]">
             {items.map((item) => (
               <div key={item.id} className="flex-shrink-0 w">
@@ -134,7 +136,7 @@ export const LookDetailsDialog = ({
                     <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                   </button>
                   <div className="p-[12px]">
-                    <p className="  text-[#333333] line-clamp-2 mb-[8px] text-[13px]">
+                    <p className="   text-foreground line-clamp-2 mb-[8px] text-[13px]">
                       {item.title}
                     </p>
                     <p className="  text-[#c87faa] mb-[8px] text-[14px]">

@@ -23,7 +23,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
         <div className="p-[16px]">
           <div className="mb-[10px]">
             <p className="  text-[#6c6c6c] mb-2 text-xs">{category.brand}</p>
-            <h4 className="  text-[#333333] text-sm">{category.title}</h4>
+            <h4 className="   text-foreground text-sm">{category.title}</h4>
           </div>
           <Button type="button" className="w-full gap-[6px]" variant="smooth">
             <ExternalLink className="size-[14px]" aria-hidden="true" />В магазин

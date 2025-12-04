@@ -19,39 +19,38 @@ button {
   @apply md:px-[60px] px-5 md:py-[40px] py-10;
 }
 
-
 .footer-accordion-enter {
   animation: footer-accordion-enter 0.2s ease-out;
 }
 
-@theme {
+:root {
   --radius: 0.65rem;
   /* Основные цвета */
   --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 20%);
+  --foreground: #333333;
   /* Карточки */
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(0 0% 20%);
+  --card-foreground: #333333;
   /* Всплывающие элементы (dropdown, popover) */
   --popover: hsl(0 0% 20%);
   --popover-foreground: hsl(0 0% 100%);
   /* Основной акцентный цвет (#c87faa) */
-  --primary: hsl(325 45% 60%);
-  --primary-foreground: hsl(0 0% 100%);
+  --primary: #c87faa;
+  --primary-foreground: #f7ecf2;
   /* Вторичный цвет (светлый розовый фон #f7ecf2) */
   --secondary: hsl(325 58% 93%);
-  --secondary-foreground: hsl(0 0% 20%);
+  --secondary-foreground: #333333;
   /* Приглушенные цвета */
   --muted: hsl(325 58% 93%);
-  --muted-foreground: hsl(0 0% 42%);
+  --muted-foreground: #999999;
   /* Акцент для hover состояний */
   --accent: hsl(325 58% 93%);
-  --accent-foreground: hsl(325 45% 60%);
+  --accent-foreground: #b56d96;
   /* Деструктивные действия */
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
   /* Границы */
-  --border: hsl(0 0% 80%);
+  --border: #e0e0e0;
   --input: hsl(0 0% 90%);
   /* Фокус (ring) */
   --ring: hsl(325 45% 60%);
@@ -72,6 +71,7 @@ button {
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-accent-foreground: var(--accent-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);

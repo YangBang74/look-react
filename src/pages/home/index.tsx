@@ -53,7 +53,7 @@ const looksData: LookCardType[] = [
 
 export const HomePage = () => {
   return (
-    <div className="contain space-y-12.5">
+    <div className="contain md:space-y-12.5 space-x-6">
       <div className="grid gap-[15px] md:grid-cols-4 grid-cols-2">
         {homeShortcuts.map(({ label, Icon, to }) => (
           <Link
@@ -64,14 +64,14 @@ export const HomePage = () => {
               <div className="rounded-full bg-white flex items-center justify-center group-hover:bg-[#c87faa] transition-all !w-[60px] !h-[60px] aspect-square">
                 <Icon className="text-[#c87faa] group-hover:text-white transition-colors size-[28px]" />
               </div>
-              <p className="text-[#333333] text-center text-[14px]">{label}</p>
+              <p className=" text-foreground text-center text-[14px]">{label}</p>
             </div>
           </Link>
         ))}
       </div>
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-[#333333] uppercase text-lg md:text-[1.375rem]">Мои образы</h2>
+          <h2 className=" text-foreground uppercase text-lg md:text-[1.375rem]">Мои образы</h2>
           <button className="flex items-center gap-[8px] text-[#c87faa] hover:text-[#b36e96] transition-colors md:text-sm text-[13px]">
             <span className=" ">Смотреть все</span>
             <ChevronRight className="size-[16px] md:size-5" />
@@ -95,7 +95,7 @@ export const HomePage = () => {
       </div>
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-[#333333] uppercase text-lg md:text-[1.375rem]">Мой шкаф</h2>
+          <h2 className=" text-foreground uppercase text-lg md:text-[1.375rem]">Мой шкаф</h2>
           <button className="flex items-center gap-[8px] text-[#c87faa] hover:text-[#b36e96] transition-colors md:text-sm text-[13px]">
             <span>Смотреть все</span>
             <ChevronRight className="size-[16px] md:size-5" />
@@ -119,9 +119,11 @@ export const HomePage = () => {
                   <Icon className="size-[60px] text-[#c87faa]" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="  text-[#333333] uppercase mb-[12px] text-[24px]">{card.title}</h3>
+                  <h3 className="   text-foreground uppercase mb-[12px] text-[24px]">
+                    {card.title}
+                  </h3>
                   <p className="  text-[#6c6c6c] mb-[20px] text-[16px]">{card.description}</p>
-                  <Button type="button" className="px-[24px] py-[12px]" variant="default">
+                  <Button type="button" variant="default" size="lg">
                     {card.buttonText}
                     <ArrowRight className="size-[18px]" aria-hidden="true" />
                   </Button>
