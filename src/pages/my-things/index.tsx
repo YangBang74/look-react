@@ -1,11 +1,14 @@
+import { useState } from 'react'
 import { Button } from '@/shared/ui'
 import { Plus, Search, SlidersHorizontal } from 'lucide-react'
 import { ThingCard } from './ui/ThingCard'
 import { ThingFilters } from './ui/ThingFilters'
+import { AddThingDialog } from './ui/AddThingDialog/AddThingDialog'
 import { filterConfigs } from './model'
 import { useMyThings } from './model/useMyThings'
 
 export const MyThingsPage = () => {
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
   const {
     showFilters,
     setShowFilters,
@@ -26,11 +29,12 @@ export const MyThingsPage = () => {
         <h1 className="text-foreground leading-[1.1] uppercase tracking-wide md:text-[28px] text-xl">
           МОИ ВЕЩИ
         </h1>
-        <Button type="button" variant="default" size="lg">
+        <Button type="button" variant="default" size="lg" onClick={() => setIsAddDialogOpen(true)}>
           <Plus className="size-[18px]" aria-hidden="true" />
           Добавить
           <span className="hidden md:block">вещь</span>
         </Button>
+        <AddThingDialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen} />
       </div>
       <div className="flex items-center gap-[12px] mb-[20px]">
         <div className="flex-1 relative">
@@ -41,7 +45,7 @@ export const MyThingsPage = () => {
           <input
             type="text"
             placeholder="Поиск по категории, цвету, тегам, бренду..."
-            className="w-full border border-border truncate rounded-full focus:outline-none focus:border-primary bg-white transition-colors pl-[45px] pr-[16px] py-[10px] text-[14px]"
+            className="w-full border border-border truncate rounded-full focus:outline-none focus:border-primary bg-white transition-colors pl-[45px] pr-[16px] md:py-[10px] py-2 text-[14px]"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -72,6 +76,7 @@ export const MyThingsPage = () => {
         {filteredThings.map((thing) => (
           <ThingCard
             key={thing.id}
+            id={thing.id}
             title={thing.title}
             brand={thing.brand}
             image={thing.image}
