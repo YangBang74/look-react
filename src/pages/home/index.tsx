@@ -1,6 +1,6 @@
 import { ChevronRight, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { InfiniteSlider } from '@/shared/ui'
+import { InfiniteSlider, Button } from '@/shared/ui'
 import { formatPrice, getItemsWord } from './lib/utils'
 import { LookCard, CategoryCard } from './ui'
 import type { LookCard as LookCardType } from './model'
@@ -119,16 +119,12 @@ export const HomePage = () => {
                   <Icon className="size-[60px] text-[#c87faa]" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-['Montserrat',sans-serif] text-[#333333] uppercase mb-[12px] text-[24px]">
-                    {card.title}
-                  </h3>
-                  <p className="font-['Montserrat',sans-serif] text-[#6c6c6c] mb-[20px] text-[16px]">
-                    {card.description}
-                  </p>
-                  <button className="inline-flex items-center gap-[10px] px-[24px] py-[12px] bg-[#c87faa] text-white rounded-[100px] font-['Montserrat',sans-serif] hover:bg-[#b36e96] transition-colors text-[14px]">
+                  <h3 className="  text-[#333333] uppercase mb-[12px] text-[24px]">{card.title}</h3>
+                  <p className="  text-[#6c6c6c] mb-[20px] text-[16px]">{card.description}</p>
+                  <Button type="button" className="px-[24px] py-[12px]" variant="default">
                     {card.buttonText}
                     <ArrowRight className="size-[18px]" aria-hidden="true" />
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

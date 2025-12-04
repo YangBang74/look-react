@@ -7,3 +7,4 @@ export const mobileNavItems = [
   { label: 'Образы', to: '/looks', Icon: Archive },
   { label: 'Кабинет', to: '/profile', Icon: User },
 ] as const
+

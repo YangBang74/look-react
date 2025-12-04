@@ -1,4 +1,3 @@
-import type { LookCardProps } from '../model/type'
 import { Share2, EllipsisVertical, Edit, Calendar, Trash2 } from 'lucide-react'
 import {
   DropdownMenu,
@@ -7,7 +6,9 @@ import {
   DropdownMenuItem,
   Dialog,
   DialogTrigger,
+  Button,
 } from '@/shared/ui'
+import type { LookCardProps } from '../model/type'
 import { LookDetailsDialog } from './LookDetailsDialog'
 
 export const LookCard = ({ look, formattedPrice, itemsWord }: LookCardProps) => (
@@ -52,15 +53,15 @@ export const LookCard = ({ look, formattedPrice, itemsWord }: LookCardProps) => 
           </p>
         </div>
         <div className="flex items-center gap-[8px]">
-          <button className="flex-1 rounded-[100px]   uppercase transition-all flex items-center justify-center gap-[6px] border border-[#c87faa] text-[#c87faa] hover:bg-[#f7ecf2] px-[12px] py-[9px] text-[12px]">
+          <Button type="button" className="flex-1 gap-[6px]" variant="outline">
             <Share2 className="size-[14px]" aria-hidden="true" />
             Поделиться
-          </button>
+          </Button>
           <Dialog>
             <DialogTrigger asChild>
-              <button className="flex-1 rounded-[100px]   uppercase transition-all flex items-center justify-center border border-[#c87faa] text-[#c87faa] hover:bg-[#f7ecf2] px-[12px] py-[9px] text-[12px]">
+              <Button type="button" className="flex-1" variant="outline">
                 Посмотреть
-              </button>
+              </Button>
             </DialogTrigger>
             <LookDetailsDialog look={look} formattedPrice={formattedPrice} itemsWord={itemsWord} />
           </Dialog>

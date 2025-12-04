@@ -17,3 +17,4 @@ export {
   DialogDescription,
   DialogClose,
 } from './dialog'
+export { Button } from './button'

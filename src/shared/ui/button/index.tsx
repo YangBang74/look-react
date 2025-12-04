@@ -1,5 +1,16 @@
-export const Button = () => {
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { cn } from '@/shared/lib/utils'
+import { buttonBaseClasses, buttonVariantClasses, type ButtonVariant } from './variants'
+
+type ButtonProps = {
+  variant?: ButtonVariant
+  children: ReactNode
+} & ButtonHTMLAttributes<HTMLButtonElement>
+
+export const Button = ({ variant = 'default', className, children, ...props }: ButtonProps) => {
   return (
-    <button className="bg-blue-500 text-white p-2 rounded-md">Click me</button>
+    <button className={cn(buttonBaseClasses, buttonVariantClasses[variant], className)} {...props}>
+      {children}
+    </button>
   )
 }
